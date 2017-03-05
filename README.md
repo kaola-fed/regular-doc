@@ -1,1 +1,1 @@
-# Unofficial documents for RegularJS
+# Documents for RegularJS <sup>unofficial</sup>
