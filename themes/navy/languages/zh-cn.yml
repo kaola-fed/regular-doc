@@ -1,0 +1,19 @@
+menu:
+  docs: Docs
+  api: API
+  blogs: Blogs
+
+page:
+  contents: 目录
+  back_to_top: 回到顶部
+  improve: 改进本文
+  prev: 上一页
+  next: 下一页
+
+sidebar:
+  docs:
+    getting_started: 开始使用
+    what: RegularJS 是什么
+  api:
+    static: 静态接口
+    extend: Component.extend

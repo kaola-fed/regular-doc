@@ -1,0 +1,7 @@
+docs:
+  getting_started:
+    what: what.html
+
+api:
+  static:
+    extend: extend.html
