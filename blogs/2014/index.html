@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>News | RegularJS</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://regularjs.org/blogs/2014/index.html">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.5.0/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="RegularJS">
+  <!-- Google Analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4910098-10', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">RegularJS</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/docs/" class="main-nav-link">Docs</a><a href="/api/" class="main-nav-link">API</a><a href="/blogs/" class="main-nav-link">Blogs</a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    
+<div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      
+        
+          <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1>
+        <a href="/blogs/2014/07/26/animation-rethink/" class="article-title" itemprop="name">Rethink declarative animation</a>
+      </h1>
+    
+    <a href="/blogs/2014/07/26/animation-rethink/" class="article-date"><time datetime="2014-07-26T00:00:00.000Z">2014-07-26</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <h2 id="Introduction" class="article-heading"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction<a class="article-anchor" href="#Introduction" aria-hidden="true"></a></h2><p>Today, beacuse of new trends like <a href="http://www.google.com/design/spec/material-design/introduction.html" target="_blank" rel="external">material design</a> and motion design, the animation is become more and more important in web-development.</p>
+<p>On the other hand, thanks for the standardized <a href="">web-component</a> and frameworks like angularjs, knockoutjs, reactjs and vuejs etc.  building the view of application in declartive way is coming into popular .</p>
+<blockquote>
+<p><strong>So, what about declarative animation? </strong></p>
+</blockquote>
+<p>This article serves to demonstrate an even better solution for declarative animation. before diving into detail, let’s first check ‘Real World  Declartive Animation’ .</p>
+<a id="more"></a>
+<h2 id="Real-World-Declartive-Animation" class="article-heading"><a href="#Real-World-Declartive-Animation" class="headerlink" title="Real World  Declartive Animation"></a>Real World  Declartive Animation<a class="article-anchor" href="#Real-World-Declartive-Animation" aria-hidden="true"></a></h2><p>This section will introduce the exsited approaches to implement declarative animation</p>
+<h3 id="Angular" class="article-heading"><a href="#Angular" class="headerlink" title="Angular"></a>Angular<a class="article-anchor" href="#Angular" aria-hidden="true"></a></h3><p><a href="https://github.com/angular/angular.js" target="_blank" rel="external">angular</a> is the most popular framework that have nearly 27000 stars on github now. </p>
+<p>in angularjs,  animation support is based on the module <code>ngAnimate</code> . The directives that support animation automatically are: ngRepeat, ngInclude, ngIf, ngSwitch, ngShow, ngHide, ngView and ngClass.</p>
+<p>you need to define the appropriate CSS classes or to register a JavaScript animation via the module.animation() function.</p>
+<p><strong>Example</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">.slide.ng-enter, .slide.ng-leave &#123;</div><div class="line">  -webkit-transition:0.5s linear all;</div><div class="line">  transition:0.5s linear all;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.slide.ng-enter &#123; &#125;        /* starting animations for enter */</div><div class="line">.slide.ng-enter-active &#123; &#125; /* terminal animations for enter */</div><div class="line">.slide.ng-leave &#123; &#125;        /* starting animations for leave */</div><div class="line">.slide.ng-leave-active &#123; &#125; /* terminal animations for leave */</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--</span></div><div class="line">the animate service will automatically add .ng-enter and .ng-leave to the element</div><div class="line">to trigger the CSS transition/animations</div><div class="line">--&gt;</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span> <span class="attr">ng-if</span>=<span class="string">"Expression"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>when the <code>Expression</code> is evaluated to <code>true</code>, the  class<code>ng-enter</code> is added first to  prepares initial state, then <code>ng-enter-active</code> is added at nextReflow(similar with <code>setTimeout(0)</code>). </p>
+<h3 id="Anijs" class="article-heading"><a href="#Anijs" class="headerlink" title="Anijs"></a><a href="https://github.com/anijs/anijs" target="_blank" rel="external">Anijs</a><a class="article-anchor" href="#Anijs" aria-hidden="true"></a></h3><blockquote>
+<p>Anijs: Declarative handling library for CSS animations. </p>
+</blockquote>
+<p>anijs’s main objective is to provide an eloquent, easy to translate, and quick to develop environment based on css animations.</p>
+<p><strong>Example</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">data-anijs</span>=<span class="string">"if: DOMContentLoaded, on: document, do: swing animated, after: holdAnimClass"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>the exmpale above means: </p>
+<p>when  <code>DOMContentLoaded</code>  triggered on document, addClass <code>swing</code> <code>animated</code>, then hold them after animationend(or transitionend). </p>
+<p>It is dead simple and intuitive. the only requirement is to include a 8kb jsfile(minified, no gzip).</p>
+<h3 id="Vuejs" class="article-heading"><a href="#Vuejs" class="headerlink" title="Vuejs"></a><a href="http://vuejs.org/" target="_blank" rel="external">Vuejs</a><a class="article-anchor" href="#Vuejs" aria-hidden="true"></a></h3><p>vuejs’s animation-support is very lightweight. just like angular, it hooks the element’s lifecycle at <code>enter</code> and <code>leave</code>  (based on directive, e.g. <code>v-if</code>). you can use three directive to customize your animation</p>
+<ol>
+<li><code>v-animation</code>  animation based on class and animation</li>
+<li><code>v-transition</code>: animation based on class and transition </li>
+<li><code>v-effect</code>: custom animation extension.</li>
+</ol>
+<p><strong>example</strong><br>use <code>animation</code> or <code>transition</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"animated"</span> <span class="attr">v-if</span>=<span class="string">"show"</span> <span class="attr">v-animation</span>&gt;</span>Look at me!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"msg"</span> <span class="attr">v-if</span>=<span class="string">"show"</span> <span class="attr">v-transition</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>use custom effect</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-effect</span>=<span class="string">"my-effect"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">Vue.effect(<span class="string">'my-effect'</span>, &#123;</div><div class="line">    <span class="attr">enter</span>: <span class="function"><span class="keyword">function</span> (<span class="params">el, insert, timeout</span>) </span>&#123;</div><div class="line">        <span class="comment">// insert() will actually insert the element</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">leave</span>: <span class="function"><span class="keyword">function</span> (<span class="params">el, remove, timeout</span>) </span>&#123;</div><div class="line">        <span class="comment">// remove() will actually remove the element</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>To be honest, I don’t know why vuejs make distinguish between these three cases.</p>
+<h3 id="React" class="article-heading"><a href="#React" class="headerlink" title="React"></a><a href="http://facebook.github.io/react/" target="_blank" rel="external">React</a><a class="article-anchor" href="#React" aria-hidden="true"></a></h3><p>React’s animation support is based on the low-level API: <code>ReactTransitionGroup</code>. you can check the introduction of <code>ReactCSSTransitionGroup</code>(High-level API) on its <a href="http://facebook.github.io/react/docs/animation.html#getting-started" target="_blank" rel="external">animation page</a></p>
+<p><strong>Example</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/** @jsx React.DOM */</div><div class="line"></div><div class="line">var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;</div><div class="line"></div><div class="line">var TodoList = React.createClass(&#123;</div><div class="line">  // ignored some methods for short</div><div class="line">  render: function() &#123;</div><div class="line">    var items = this.state.items.map(function(item, i) &#123;</div><div class="line">      return (</div><div class="line">        &lt;div key=&#123;item&#125; onClick=&#123;this.handleRemove.bind(this, i)&#125;&gt;</div><div class="line">          &#123;item&#125;</div><div class="line">        &lt;/div&gt;</div><div class="line">      );</div><div class="line">    &#125;.bind(this));</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;button onClick=&#123;this.handleAdd&#125;&gt;Add Item&lt;/button&gt;</div><div class="line">        &lt;ReactCSSTransitionGroup transitionName=&quot;example&quot;&gt;</div><div class="line">          &#123;items&#125;</div><div class="line">        &lt;/ReactCSSTransitionGroup&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>The element that wrapped by  <code>ReactCSSTransitionGroup</code> can animate when it is injected to or leave from the component.  it will get the <code>example-enter</code> CSS class and the <code>example-enter-active</code> CSS class added in the next tick (similar with angular). This is a convention based on the transitionName prop.</p>
+<h3 id="Summary" class="article-heading"><a href="#Summary" class="headerlink" title="Summary"></a>Summary<a class="article-anchor" href="#Summary" aria-hidden="true"></a></h3><p>compare with the <code>JavaScript-Based Animation</code>(e.g.  <a href="http://velocityjs.org/" target="_blank" rel="external">Velocity.js</a> or jquery), the <code>declarative animation</code> that introduced above is obviously less flexible. for example:</p>
+<ol>
+<li>only works in given environment .(e.g. when element <code>enter</code> or <code>leave</code>)</li>
+<li>can not chainable</li>
+<li>can not combine with other elements’s  animation</li>
+<li>developer know nothing about the phase of the animation. (image that you need do some work in javascript when the animation is done)</li>
+</ol>
+<h2 id="An-Even-Better-Solution-for-declarative-animation" class="article-heading"><a href="#An-Even-Better-Solution-for-declarative-animation" class="headerlink" title="An Even Better Solution for declarative animation!"></a>An Even Better Solution for declarative animation!<a class="article-anchor" href="#An-Even-Better-Solution-for-declarative-animation" aria-hidden="true"></a></h2><p>The solution  introduced later that has been implemented in <a href="https://github.com/regularjs/regular" target="_blank" rel="external">regularjs</a> yet. and it can be full-supported by any framework that is data-driven(e.g. angularjs, vuejs, ractivejs..).</p>
+<p>the solution is based on single directive: <code>r-animation</code>. </p>
+<p>Syntax</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">&lt;div r-animation=&quot;Sequence&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">Sequence:</div><div class="line">  Command (&quot;;&quot; Command)*</div><div class="line"></div><div class="line">Command:</div><div class="line">  CommandName&quot;:&quot; Param</div><div class="line"></div><div class="line">CommandName: [-\w]+</div><div class="line"></div><div class="line">Param: [^;]+</div></pre></td></tr></table></figure>
+<p>The following sections will raise several questions and solve them later by <code>r-animation</code>. </p>
+<blockquote>
+<p><strong>please be a patience man until compelete the rest of the page, you will find the power of <code>r-animation</code> !</strong></p>
+</blockquote>
+<p><em>the examples will depend on awesome <a href="daneden.github.io/animate.css">animate.css</a> for some css-related animation.</em> </p>
+<h3 id="Question-1-When-the-animation-start" class="article-heading"><a href="#Question-1-When-the-animation-start" class="headerlink" title="Question 1: When the animation start"></a>Question 1: When the animation start<a class="article-anchor" href="#Question-1-When-the-animation-start" aria-hidden="true"></a></h3><p>There are two types of Command: 1. <code>trigger</code>   2. <code>step</code>. </p>
+<p><code>trigger</code> is used to trigger a animation sequence. and <code>step</code> is used to define a single animation.</p>
+<p><strong>Command on</strong> (trigger): when specified event is triggered , starting the animation.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">r-animation</span>=<span class="string">"on: click; class:  animated swing;"</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>this example means: </p>
+<ol>
+<li>when the element is clicked, trigged the animations.</li>
+<li>Command <code>class</code> will addclass <code>animated swing</code>(maybe trigger animation) to element, when  the <code>animationend</code>(or <code>transitionend</code>) triggered, remove the class.</li>
+<li>animation done</li>
+</ol>
+<h4 id="however-how-to-hook-the-enter-and-leave-time-on-element" class="article-heading"><a href="#however-how-to-hook-the-enter-and-leave-time-on-element" class="headerlink" title="however, how to hook the enter and leave time on element?"></a>however, how to hook the <code>enter</code> and <code>leave</code> time on element?<a class="article-anchor" href="#however-how-to-hook-the-enter-and-leave-time-on-element" aria-hidden="true"></a></h4><p>regularjs emit the mock <code>enter</code> and <code>leave</code> event for hooking the element’s lifycle, you can also use <code>on</code> to handle it;</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box'</span> <span class="attr">r-hide</span>=<span class="string">&#123;&#123;test&#125;&#125;</span> <span class="attr">r-animation</span>=<span class="string">"</span></span></div><div class="line">  on: enter; class: animated bounceIn;</div><div class="line">  on: leave; class: animated bounceOut"&gt;</div><div class="line">  Box: enter</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>it is valid that defining multiply <code>trigger</code> on single <code>r-animation</code>. every <code>trigger</code> will create new animtion sequence.</p>
+<h4 id="Is-there-any-other-trigger" class="article-heading"><a href="#Is-there-any-other-trigger" class="headerlink" title="Is there any other trigger?"></a>Is there any other trigger?<a class="article-anchor" href="#Is-there-any-other-trigger" aria-hidden="true"></a></h4><p>now , we can take advantage of the data-driven framework to implement a more flexible command than <code>on</code> .</p>
+<p><strong>Command when</strong> (trigger): when the specifed Expression is evaluated to true, starting the animation.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box box-2'</span>  <span class="attr">r-animation</span>=<span class="string">"when: test === true; class: animated swing"</span>&gt;</span></div><div class="line">Box2: triggered when test === true</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>when the <code>test === true</code> is computed to true, the animation will start.</p>
+<blockquote>
+<p><a href="http://codepen.io/leeluolee/pen/gkcKl/" target="_blank" rel="external"><span class="icon-arrow-right"> <strong>Result on Codepen</strong></span></a></p>
+</blockquote>
+<h3 id="Question-2-How-to-make-the-animation-chainable" class="article-heading"><a href="#Question-2-How-to-make-the-animation-chainable" class="headerlink" title="Question 2: How to make the animation chainable?"></a>Question 2: How to make the animation chainable?<a class="article-anchor" href="#Question-2-How-to-make-the-animation-chainable" aria-hidden="true"></a></h3><p><code>r-animation</code> is born to support chainable animation,you can simply sepecify multiply <code>steps</code> after one <code>trigger</code>.</p>
+<p><strong>Example</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box'</span> <span class="attr">r-animation</span>=</span></div><div class="line">   <span class="string">"on:click; </span></div><div class="line">      class: animated swing;</div><div class="line">      class: animated shake;</div><div class="line">      class: animated bounceOut;</div><div class="line">      class: animated bounceIn;</div><div class="line">        "&gt;</div><div class="line">  click me</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>now, you will see the steps animate one by one.</p>
+<blockquote>
+<p><a href="http://codepen.io/leeluolee/pen/kCqzJ/" target="_blank" rel="external"><span class="icon-arrow-right"> <strong>Result on Codepen</strong></span></a></p>
+</blockquote>
+<h3 id="Question-3-How-to-animation-two-element-step-by-step" class="article-heading"><a href="#Question-3-How-to-animation-two-element-step-by-step" class="headerlink" title="Question 3: How to animation two element step by step?"></a>Question 3: How to animation two element step by step?<a class="article-anchor" href="#Question-3-How-to-animation-two-element-step-by-step" aria-hidden="true"></a></h3><p>Thanks for the data-driven system. you can use the <code>call</code> command for evaluating a Expression. after evaluating, the digest phase(regularjs is also based on <strong>dirty-check</strong>) will be automately triggered, it can trigger other animation (work with <code>when</code>). </p>
+<p><strong>Command call</strong>: evaluted a Expression, then enter the component’s digest phase. finaly step to next animation.</p>
+<p><strong>Example</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box animated'</span> <span class="attr">r-animation</span>=</span></div><div class="line">     <span class="string">"when:test; </span></div><div class="line">        class: swing ;</div><div class="line">        call: otherSwing=true ;</div><div class="line">        class: shake"&gt;</div><div class="line">  box1: trigger by checkbox</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  </div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box animated'</span> <span class="attr">r-animation</span>=</span></div><div class="line">     <span class="string">"when: otherSwing; </span></div><div class="line">        class:  swing; </div><div class="line">      "&gt;box2: after box1 swing<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>steps as follow:</p>
+<ol>
+<li>when <code>test</code> is computed to true, start box1’s animation</li>
+<li>swing then call <code>otherSwing = true</code>;</li>
+<li>box2’s <code>otherSwing</code> is evaluted to <code>true</code>. </li>
+<li>box2 shakes, meanwhile box1 shakes;</li>
+<li>done.</li>
+</ol>
+<blockquote>
+<p><a href="http://codepen.io/leeluolee/pen/aHwoh/" target="_blank" rel="external"><span class="icon-arrow-right"> <strong>Result on Codepen</strong></span></a></p>
+</blockquote>
+<p>thanks for <code>call</code> and data-driven system, we can staying competitive with <code>javascript based animation</code> on control.</p>
+<h3 id="Question-4-Is-there-any-other-buildin-command" class="article-heading"><a href="#Question-4-Is-there-any-other-buildin-command" class="headerlink" title="Question 4: Is there any other buildin command?"></a>Question 4: Is there any other buildin command?<a class="article-anchor" href="#Question-4-Is-there-any-other-buildin-command" aria-hidden="true"></a></h3><ul>
+<li><p><code>wait</code>: delay for next animation</p>
+<p><strong>example</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box animated'</span> <span class="attr">r-animation</span>=</span></div><div class="line">     <span class="string">"on:click; </span></div><div class="line">        class: swing ;</div><div class="line">        wait: 2000 ;</div><div class="line">        class: shake"&gt;</div><div class="line">  wait: click me</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>the example means: after clicking, swing then waiting 2000ms, finally shake.</p>
+</li>
+</ul>
+<ul>
+<li><p><code>style</code>: set style and waiting the <code>transitionend</code> (if the style trigger the <code>transition</code>)</p>
+<p><strong>example</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box animated'</span> <span class="attr">r-animation</span>=</span></div><div class="line">     <span class="string">"on: click; </span></div><div class="line">        class:  swing; </div><div class="line">        style: color #333;</div><div class="line">        class: bounceOut;</div><div class="line">        style: display none;</div><div class="line">      "&gt;style: click me <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>add <code>transition</code> to make color fading effect work.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.box</span><span class="selector-class">.animated</span>&#123;</div><div class="line">   <span class="attribute">transition</span>:  color <span class="number">1s</span> linear;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>example means: after clicking, swing then set <code>style.color=#333</code>(trigger transition)… </p>
+</li>
+</ul>
+<blockquote>
+<p><a href="http://codepen.io/leeluolee/pen/FhwGC/" target="_blank" rel="external"><span class="icon-arrow-right"> <strong>Result on Codepen</strong></span></a></p>
+</blockquote>
+<p>you can also extend custom command by your self. </p>
+<h3 id="Question-5-How-to-extend-Custom-Command" class="article-heading"><a href="#Question-5-How-to-extend-Custom-Command" class="headerlink" title="Question 5: How to extend Custom Command?"></a>Question 5: How to extend Custom Command?<a class="article-anchor" href="#Question-5-How-to-extend-Custom-Command" aria-hidden="true"></a></h3><p>you can extend javascript-based Animation via  <code>Component.animation(name, handle)</code>. </p>
+<p>for example, we need fading animation.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">Regular.animation(<span class="string">"fade"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">step</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> param = step.param,</div><div class="line">    element = step.element,</div><div class="line">    fadein = param === <span class="string">"in"</span>,</div><div class="line">    step = fadein?  <span class="number">1.05</span>: <span class="number">0.9</span>;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">done</span>)</span>&#123; </div><div class="line">    <span class="keyword">var</span> start = fadein?  <span class="number">0.01</span>: <span class="number">1</span>;</div><div class="line">    <span class="keyword">var</span> tid = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      start *= step </div><div class="line">      <span class="keyword">if</span>(fadein &amp;&amp; <span class="number">1</span>- start &lt; <span class="number">1e-3</span>)&#123;</div><div class="line">        start = <span class="number">1</span>; </div><div class="line">        clearInterval(tid);</div><div class="line">        done()</div><div class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!fadein &amp;&amp; start &lt; <span class="number">1e-3</span>)&#123;</div><div class="line">        start = <span class="number">0</span>;</div><div class="line">        clearInterval(tid);</div><div class="line">        done()</div><div class="line">      &#125;</div><div class="line">      element.style.opacity = start;</div><div class="line">    &#125;, <span class="number">1000</span> / <span class="number">60</span>) </div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>describe in template</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box animated'</span> <span class="attr">r-animation</span>=</span></div><div class="line">       <span class="string">"on:click; </span></div><div class="line">        class: swing ;</div><div class="line">        fade: out ;</div><div class="line">        fade: in;</div><div class="line">         "&gt;</div><div class="line">    fade: click me</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>the only thing you need to do is that: when your animation is compelete, call the function <code>done</code>.</p>
+<blockquote>
+<p><a href="http://codepen.io/leeluolee/pen/qJvry/" target="_blank" rel="external"><span class="icon-arrow-right"> <strong>Result on Codepen</strong></span></a></p>
+</blockquote>
+<p>you can also check the builtin’s sourcecode on <a href="https://github.com/regularjs/regular/blob/master/src/directive/animation.js#L71" target="_blank" rel="external">github</a>. it is realy dead simple!</p>
+<h3 id="Question-6-Need-An-compeletely-Example" class="article-heading"><a href="#Question-6-Need-An-compeletely-Example" class="headerlink" title="Question 6: Need An compeletely Example?"></a>Question 6: Need An compeletely Example?<a class="article-anchor" href="#Question-6-Need-An-compeletely-Example" aria-hidden="true"></a></h3><p>let’s create a infinite animation for joke.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box animated'</span> <span class="attr">r-animation</span>=</span></div><div class="line">      <span class="string">"when:test==1; </span></div><div class="line">         class: shake;</div><div class="line">         call: test=2 ;"</div><div class="line">         &gt;</div><div class="line">   shake</div><div class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box animated'</span> <span class="attr">r-animation</span>=</span></div><div class="line">    <span class="string">"when: test==2; </span></div><div class="line">       class:  bounce; </div><div class="line">       call: test=3;</div><div class="line">     "&gt;box2: bounce<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box animated'</span> <span class="attr">r-animation</span>=</span></div><div class="line">  <span class="string">"when: test==3; </span></div><div class="line">     class:  swing; </div><div class="line">     call: test=1;</div><div class="line">   "&gt;box2: swing<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>just as the logic described by the template. the sequence will never stopped.</p>
+<blockquote>
+<p><a href="http://codepen.io/leeluolee/pen/vrgqu/" target="_blank" rel="external"><span class="icon-arrow-right"> <strong>Result on Codepen</strong></span></a></p>
+</blockquote>
+<h2 id="End" class="article-heading"><a href="#End" class="headerlink" title="End"></a>End<a class="article-anchor" href="#End" aria-hidden="true"></a></h2><blockquote>
+<h3 id="if-the-post-is-helpful-to-you-gives-regularjs-a-star" class="article-heading"><a href="#if-the-post-is-helpful-to-you-gives-regularjs-a-star" class="headerlink" title="if the post is helpful to you,  gives regularjs a star"></a>if the post is helpful to you,  <a href="https://github.com/regularjs/regular" target="_blank" rel="external">gives regularjs a star</a><a class="article-anchor" href="#if-the-post-is-helpful-to-you-gives-regularjs-a-star" aria-hidden="true"></a></h3></blockquote>
+
+  </div>
+</article>
+
+        
+      
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      Release under <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a> | 
+      Copyright &copy; 2017 <a href="https://leeluolee.github.io/" target="_blank">@leeluolee</a>. Reserved<br>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/docs/" class="mobile-nav-link">Docs</a><a href="/api/" class="mobile-nav-link">API</a><a href="/blogs/" class="mobile-nav-link">Blogs</a>
+    </ul>
+    
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<!-- endbuild -->
+<!-- Algolia -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.5.0/docsearch.min.js"></script>
+<script type="text/javascript">
+document.getElementById('search-input-wrap').classList.add('on');
+docsearch({
+  apiKey: 'cdea7d4e47d84f6145b77e7f68689f35',
+  indexName: 'regular',
+  inputSelector: '#search-input'
+});
+</script>
+
+
+</body>
+</html>
