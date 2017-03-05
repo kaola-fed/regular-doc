@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://regularjs.org/"/>
-  <updated>2017-03-05T13:37:21.327Z</updated>
+  <updated>2017-03-05T13:49:24.282Z</updated>
   <id>https://regularjs.org/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://regularjs.org/blogs/2014/07/26/animation-rethink/"/>
     <id>https://regularjs.org/blogs/2014/07/26/animation-rethink/</id>
     <published>2014-07-26T00:00:00.000Z</published>
-    <updated>2017-03-05T13:37:21.327Z</updated>
+    <updated>2017-03-05T13:49:24.282Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Today, beacuse of new trends like <a href="http://www.google.com/design/spec/material-design/introduction.html" target="_blank" rel="external">material design</a> and motion design, the animation is become more and more important in web-development.</p>
 <p>On the other hand, thanks for the standardized <a href="">web-component</a> and frameworks like angularjs, knockoutjs, reactjs and vuejs etc.  building the view of application in declartive way is coming into popular .</p>
