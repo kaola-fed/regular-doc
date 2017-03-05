@@ -14,9 +14,9 @@ per_page: 0
 
 theme: navy
 
-google_analytics: UA-4910098-10
+google_analytics: UA-46698359-4
 algolia:
-  api_key: cdea7d4e47d84f6145b77e7f68689f35
+  api_key: 365f3d88c244de5de6835c3f0f72b1ce
   index_name: regular
 github:
   name: regularjs
