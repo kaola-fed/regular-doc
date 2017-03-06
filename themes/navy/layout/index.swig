@@ -19,8 +19,7 @@
         <li class="intro-cmd-item">// NPM</li>
         <li class="intro-cmd-item intro-cmd-symbol">npm install regularjs</li>
       </ul>
-      <p data-height="400" data-theme-id="28227" data-slug-hash="mWEKZy" data-default-tab="js,result" data-user="int64ago" data-embed-version="2" data-pen-title="demo for regularjs" class="codepen">See the Pen <a href="http://codepen.io/int64ago/pen/mWEKZy/">demo for regularjs</a> by Cody Chan (<a href="http://codepen.io/int64ago">@int64ago</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+      <iframe width="100%" height="300" src="//jsrun.net/EnpKp/embedded/all/light/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
       <div id="intro-get-started-wrap">
         <a href="docs/" id="intro-get-started-link">Get started</a>
       </div>
